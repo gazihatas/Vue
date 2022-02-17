@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vue.js | V-IF Kullanımı</title>
+    <title>Vue.js | v-bind Kullanımı</title>
 </head> 
 <body>
     
 
         <div id="app">
-            <div v-if="isProfile">
-                <img :src="image">
-                <a :href="url">Vue.js page</a>
+            <div v-if="!isUploaded">
+                Görüntü başarı ile eklendi.
             </div>
+
         </div>
 
     
@@ -24,9 +24,7 @@
     Vue.createApp({
         data() {
         return {
-            isProfile:true,
-            image:'https://www.rudaw.net/ContentFilesArchive/605239Image1.jpg?version=4315441',
-            url:'https://vuejs.org/',
+            isUploaded:false,
         }
         }
     }).mount('#app')
