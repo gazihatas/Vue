@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js | props ve component kullanımı</title>
+</head> 
+<body>
+    
+
+        <div id="app">
+            <item-component 
+            v-for="item in contacts"
+            v-bind:data="item"
+            v-bind:key="item.id"></item-component>
+
+        </div>
+
+    
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+        <script>
+            Vue.component('item-component', {
+                props:['data'],
+                template:'<li>{{data.name}}</li>'
+            });
+
+
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    contacts:[
+                        {name:'Gazi Hataş'},
+                        {name:'Feyza Akşirin'},
+                        {name:'Alparslan Akbaş'}
+                    ]
+                },
+                methods: {
+                
+                }
+            });
+        </script>
+
+</body>
+</html>
