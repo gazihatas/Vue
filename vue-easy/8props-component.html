@@ -10,11 +10,9 @@
     
 
         <div id="app">
-            <item-component 
-            v-for="item in contacts"
-            v-bind:data="item"
-            v-bind:key="item.id"></item-component>
+            <item-component :data="name"></item-component>
 
+            <button @click="changeText">Change</button>
         </div>
 
     
@@ -24,22 +22,35 @@
         <script>
             Vue.component('item-component', {
                 props:['data'],
-                template:'<li>{{data.name}}</li>'
+                template:'<li>{{data}}</li>'
             });
 
 
             var app = new Vue({
                 el: '#app',
-                data: {
-                    contacts:[
-                        {name:'Gazi Hataş'},
-                        {name:'Feyza Akşirin'},
-                        {name:'Alparslan Akbaş'}
-                    ]
+                data: {    
+                    name:'Gazi'
+                },
+                created(){
+                    console.log('1');
+                },
+                computed(){
+                    console.log('2');
+                },
+                mounted(){
+                    console.log('3');
+                },
+                watch:{
+                    name(){
+                        console.log('name değeri değişti');
+                    }
                 },
                 methods: {
-                
+                    changeText:function(){
+                        this.name = 'Feyza';
+                    }
                 }
+               
             });
         </script>
 
